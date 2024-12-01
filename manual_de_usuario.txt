@@ -1,0 +1,68 @@
+Manual de Usuario: Monitoreo en Tiempo Real de Rayos UV
+
+El Manual de Usuario describe cómo interactuar con el sistema, cómo visualizar los datos y cómo interpretar la información presentada.
+
+Acceso al Sistema
+-----------------
+1. **Requisitos**:
+   - Tener **Python 3.x** instalado en tu máquina.
+   - Tener las dependencias de **Flask**, **Plotly**, y **Firebase** instaladas. Estas dependencias se pueden instalar usando `pip`:
+   
+     ```bash
+     pip install flask plotly firebase-admin flask-cors
+     ```
+
+2. **Iniciar el Sistema**:
+   - Primero, asegúrate de tener el archivo **`firebase-credentials.json`** con las credenciales de Firebase.
+   - Ejecuta el servidor Flask desde la terminal:
+   
+     ```bash
+     python app.py
+     ```
+
+   - El sistema estará accesible desde **`http://127.0.0.1:5000`** en tu navegador web.
+
+Interfaz del Sistema
+---------------------
+La interfaz del sistema consta de las siguientes secciones principales:
+
+1. **Gráfico de Rayos UV**:
+   - El gráfico muestra en tiempo real los **niveles de rayos UV** detectados por el sensor.
+   - La línea conecta los puntos secuenciales de los datos de rayos UV, con una suavización aplicada para mayor claridad.
+   - Los puntos en el gráfico están conectados cronológicamente, mostrando una línea continua de los valores registrados.
+
+2. **Tabla de Datos**:
+   - La tabla muestra los últimos datos recibidos del sensor.
+   - Cada fila de la tabla contiene:
+     - **Sensor ID**: Identificador único del sensor.
+     - **Valor**: El valor de rayos UV medido por el sensor.
+     - **Fecha**: Fecha de la medición.
+     - **Hora**: Hora exacta de la medición.
+   - La tabla se actualiza automáticamente cada 3 segundos con los nuevos datos de la base de datos.
+
+Funcionamiento del Sistema
+---------------------------
+1. **Actualización Automática**:
+   - El sistema obtiene nuevos datos de la base de datos de Firebase cada **3 segundos**.
+   - Estos datos se agregan tanto al gráfico como a la tabla, sin eliminar los datos anteriores.
+   - Los **últimos 5 datos** siempre se muestran en la tabla, mientras que el gráfico se actualiza para mostrar todos los datos.
+
+2. **Interacción con el Gráfico**:
+   - El gráfico es interactivo, lo que significa que puedes hacer **zoom**, **desplazar** y **hover** para obtener detalles de los puntos específicos en el gráfico.
+   - Los datos se conectan secuencialmente en una línea continua para mostrar la evolución de los rayos UV en el tiempo.
+
+Visualización de los Datos:
+---------------------------
+1. **Gráfico**:
+   - El gráfico de **rayos UV** muestra una línea suave conectando los puntos de datos. Los puntos se conectan secuencialmente y se suavizan para crear una representación visual clara.
+   
+2. **Tabla**:
+   - Cada vez que se agregan nuevos datos, la tabla se **actualiza automáticamente** sin borrar los datos anteriores. Esto permite al usuario ver un historial de los **últimos 5 datos** que se han recibido del sensor.
+
+Errores Comunes y Soluciones
+-----------------------------
+1. **Error: "No hay datos disponibles para mostrar"**:
+   - Este error puede ocurrir si no hay datos almacenados en la base de datos de Firebase. Asegúrate de que los datos del sensor se estén enviando correctamente y que Firebase esté configurado correctamente.
+
+2. **Error: "Conexión rechazada al servidor"**:
+   - Esto podría indicar que el servidor Flask no está en ejecución. Verifica que hayas ejecutado el archivo `app.py` y que el servidor esté activo.

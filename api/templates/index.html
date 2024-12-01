@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoreo de Rayos UV</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist@2.9.0/plotly.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1 class="title">Monitoreo en Tiempo Real de Rayos UV</h1>
+
+    <!-- Gráfico -->
+    <div id="grafico-uv" class="chart"></div>
+
+    <!-- Últimos Datos -->
+    <div class="data-container">
+        <h2>Últimos Datos</h2>
+        <div id="ultimo-dato" class="ultimo-dato">
+            <!-- Aquí se mostrarán los últimos datos -->
+        </div>
+    </div>
+
+    <!-- Tabla de Datos -->
+    <div class="data-container">
+        <h2>Tabla de Datos</h2>
+        <table id="tabla-datos">
+            <thead>
+            <tr>
+                <th>Sensor ID</th>
+                <th>Valor</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Las filas se agregarán aquí dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

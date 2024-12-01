@@ -1,0 +1,25 @@
+Descripción del Sistema: Monitoreo en Tiempo Real de Rayos UV
+
+El Sistema de Monitoreo de Rayos UV está diseñado para visualizar, almacenar y actualizar datos en tiempo real de un sensor de rayos ultravioleta (UV) en un ambiente agrícola. El sistema recibe, procesa y visualiza los datos mediante una API RESTful desarrollada con Flask, con los datos almacenados en una base de datos en tiempo real utilizando Firebase.
+
+El sistema consta de los siguientes componentes principales:
+
+1. **Sensor de Rayos UV**: Simula la medición de niveles de rayos UV en un cultivo. Los datos enviados incluyen la identificación del sensor, el valor de rayos UV, la fecha y la hora de la medición.
+   
+2. **Backend (API Flask)**: La API se encarga de recibir los datos del sensor mediante un método `POST` y almacenarlos en una base de datos Firebase. La API también permite recuperar los últimos datos mediante un método `GET`.
+
+3. **Frontend (Página Web)**: El frontend está desarrollado en HTML, CSS y JavaScript, y permite a los usuarios visualizar el gráfico de los niveles de rayos UV en tiempo real. Los nuevos datos se apilan y se visualizan en un gráfico interactivo y en una tabla que se actualiza cada 3 segundos.
+
+4. **Base de Datos (Firebase Realtime Database)**: Los datos del sensor se almacenan en Firebase y se recuperan en tiempo real para su visualización.
+
+#### Características del Sistema:
+- **Monitoreo en tiempo real**: Los datos se actualizan automáticamente cada 3 segundos.
+- **Visualización gráfica**: Se muestra un gráfico de líneas que conecta los puntos secuenciales de los niveles de rayos UV, con suavizado para mayor claridad.
+- **Tabla de datos**: Los últimos datos se muestran en una tabla, con el **Sensor ID**, **Valor**, **Fecha** y **Hora**.
+- **Interactividad**: La página se actualiza dinámicamente cada vez que llegan nuevos datos del sensor.
+
+#### Tecnologías Utilizadas:
+- **Flask**: Framework web para construir la API RESTful.
+- **Firebase Realtime Database**: Base de datos en tiempo real donde se almacenan los datos del sensor.
+- **Plotly.js**: Librería para la visualización interactiva del gráfico de rayos UV.
+- **HTML, CSS, JavaScript**: Tecnologías para la creación de la página web interactiva.

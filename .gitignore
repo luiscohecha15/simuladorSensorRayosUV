@@ -1,0 +1,13 @@
+# Ignorar archivos de Python
+__pycache__/
+*.pyc
+
+# Ignorar entornos virtuales
+venv/
+
+# Ignorar credenciales de Firebase
+firebase_credentials/
+
+# Archivos de configuración de IDE
+.vscode/
+.idea/
